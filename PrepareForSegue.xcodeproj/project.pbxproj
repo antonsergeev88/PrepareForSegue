@@ -8,8 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		600E1B852093993F00B1AD9C /* PrepareForSegue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600E1B7B2093993E00B1AD9C /* PrepareForSegue.framework */; };
-		600E1B8A2093993F00B1AD9C /* PrepareForSegueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1B892093993F00B1AD9C /* PrepareForSegueTests.m */; };
 		600E1B8C2093993F00B1AD9C /* PrepareForSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = 600E1B7E2093993E00B1AD9C /* PrepareForSegue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		600E1B972093A87C00B1AD9C /* ValidPrepareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1B962093A87C00B1AD9C /* ValidPrepareTests.m */; };
+		600E1B9C2093AA6100B1AD9C /* ValidPrepareTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1B9B2093AA6100B1AD9C /* ValidPrepareTestsViewController.m */; };
+		600E1B9F2093CC6900B1AD9C /* InvalidPrepareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1B9E2093CC6900B1AD9C /* InvalidPrepareTests.m */; };
+		600E1BA22093CCE400B1AD9C /* InvalidPrepareTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BA12093CCE400B1AD9C /* InvalidPrepareTestsViewController.m */; };
+		600E1BA52093CFF000B1AD9C /* ValidShouldPerformTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BA42093CFF000B1AD9C /* ValidShouldPerformTests.m */; };
+		600E1BA82093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BA72093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m */; };
+		600E1BAB2093D27B00B1AD9C /* InvalidShouldPerformTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BAA2093D27B00B1AD9C /* InvalidShouldPerformTests.m */; };
+		600E1BAE2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BAD2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +34,19 @@
 		600E1B7E2093993E00B1AD9C /* PrepareForSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrepareForSegue.h; sourceTree = "<group>"; };
 		600E1B7F2093993E00B1AD9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		600E1B842093993E00B1AD9C /* PrepareForSegueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrepareForSegueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		600E1B892093993F00B1AD9C /* PrepareForSegueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrepareForSegueTests.m; sourceTree = "<group>"; };
 		600E1B8B2093993F00B1AD9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		600E1B962093A87C00B1AD9C /* ValidPrepareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidPrepareTests.m; sourceTree = "<group>"; };
+		600E1B9A2093AA6100B1AD9C /* ValidPrepareTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidPrepareTestsViewController.h; sourceTree = "<group>"; };
+		600E1B9B2093AA6100B1AD9C /* ValidPrepareTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidPrepareTestsViewController.m; sourceTree = "<group>"; };
+		600E1B9E2093CC6900B1AD9C /* InvalidPrepareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvalidPrepareTests.m; sourceTree = "<group>"; };
+		600E1BA02093CCE400B1AD9C /* InvalidPrepareTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvalidPrepareTestsViewController.h; sourceTree = "<group>"; };
+		600E1BA12093CCE400B1AD9C /* InvalidPrepareTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvalidPrepareTestsViewController.m; sourceTree = "<group>"; };
+		600E1BA42093CFF000B1AD9C /* ValidShouldPerformTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidShouldPerformTests.m; sourceTree = "<group>"; };
+		600E1BA62093D03D00B1AD9C /* ValidShouldPerformTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidShouldPerformTestsViewController.h; sourceTree = "<group>"; };
+		600E1BA72093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidShouldPerformTestsViewController.m; sourceTree = "<group>"; };
+		600E1BAA2093D27B00B1AD9C /* InvalidShouldPerformTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvalidShouldPerformTests.m; sourceTree = "<group>"; };
+		600E1BAC2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvalidShouldPerformTestsViewController.h; sourceTree = "<group>"; };
+		600E1BAD2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvalidShouldPerformTestsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +98,53 @@
 		600E1B882093993F00B1AD9C /* PrepareForSegueTests */ = {
 			isa = PBXGroup;
 			children = (
-				600E1B892093993F00B1AD9C /* PrepareForSegueTests.m */,
+				600E1B952093A81D00B1AD9C /* ValidPrepareTests */,
+				600E1B9D2093CC4100B1AD9C /* InvalidPrepareTests */,
+				600E1BA32093CFB500B1AD9C /* ValidShouldPerformTests */,
+				600E1BA92093D26200B1AD9C /* InvalidShouldPerformTests */,
 				600E1B8B2093993F00B1AD9C /* Info.plist */,
 			);
 			path = PrepareForSegueTests;
+			sourceTree = "<group>";
+		};
+		600E1B952093A81D00B1AD9C /* ValidPrepareTests */ = {
+			isa = PBXGroup;
+			children = (
+				600E1B962093A87C00B1AD9C /* ValidPrepareTests.m */,
+				600E1B9A2093AA6100B1AD9C /* ValidPrepareTestsViewController.h */,
+				600E1B9B2093AA6100B1AD9C /* ValidPrepareTestsViewController.m */,
+			);
+			path = ValidPrepareTests;
+			sourceTree = "<group>";
+		};
+		600E1B9D2093CC4100B1AD9C /* InvalidPrepareTests */ = {
+			isa = PBXGroup;
+			children = (
+				600E1B9E2093CC6900B1AD9C /* InvalidPrepareTests.m */,
+				600E1BA02093CCE400B1AD9C /* InvalidPrepareTestsViewController.h */,
+				600E1BA12093CCE400B1AD9C /* InvalidPrepareTestsViewController.m */,
+			);
+			path = InvalidPrepareTests;
+			sourceTree = "<group>";
+		};
+		600E1BA32093CFB500B1AD9C /* ValidShouldPerformTests */ = {
+			isa = PBXGroup;
+			children = (
+				600E1BA42093CFF000B1AD9C /* ValidShouldPerformTests.m */,
+				600E1BA62093D03D00B1AD9C /* ValidShouldPerformTestsViewController.h */,
+				600E1BA72093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m */,
+			);
+			path = ValidShouldPerformTests;
+			sourceTree = "<group>";
+		};
+		600E1BA92093D26200B1AD9C /* InvalidShouldPerformTests */ = {
+			isa = PBXGroup;
+			children = (
+				600E1BAA2093D27B00B1AD9C /* InvalidShouldPerformTests.m */,
+				600E1BAC2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.h */,
+				600E1BAD2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m */,
+			);
+			path = InvalidShouldPerformTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +261,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				600E1B8A2093993F00B1AD9C /* PrepareForSegueTests.m in Sources */,
+				600E1B9C2093AA6100B1AD9C /* ValidPrepareTestsViewController.m in Sources */,
+				600E1BAB2093D27B00B1AD9C /* InvalidShouldPerformTests.m in Sources */,
+				600E1BA52093CFF000B1AD9C /* ValidShouldPerformTests.m in Sources */,
+				600E1B972093A87C00B1AD9C /* ValidPrepareTests.m in Sources */,
+				600E1BA22093CCE400B1AD9C /* InvalidPrepareTestsViewController.m in Sources */,
+				600E1BA82093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m in Sources */,
+				600E1B9F2093CC6900B1AD9C /* InvalidPrepareTests.m in Sources */,
+				600E1BAE2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
