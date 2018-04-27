@@ -17,6 +17,7 @@
 		600E1BA82093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BA72093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m */; };
 		600E1BAB2093D27B00B1AD9C /* InvalidShouldPerformTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BAA2093D27B00B1AD9C /* InvalidShouldPerformTests.m */; };
 		600E1BAE2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BAD2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m */; };
+		609DA20A2093DA5400409FB3 /* ASPrepareForSegueLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 609DA2082093DA5400409FB3 /* ASPrepareForSegueLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		600E1BAA2093D27B00B1AD9C /* InvalidShouldPerformTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvalidShouldPerformTests.m; sourceTree = "<group>"; };
 		600E1BAC2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvalidShouldPerformTestsViewController.h; sourceTree = "<group>"; };
 		600E1BAD2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvalidShouldPerformTestsViewController.m; sourceTree = "<group>"; };
+		609DA2082093DA5400409FB3 /* ASPrepareForSegueLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASPrepareForSegueLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				600E1B7E2093993E00B1AD9C /* PrepareForSegue.h */,
 				600E1B7F2093993E00B1AD9C /* Info.plist */,
+				609DA2082093DA5400409FB3 /* ASPrepareForSegueLoader.m */,
 			);
 			path = PrepareForSegue;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				609DA20A2093DA5400409FB3 /* ASPrepareForSegueLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
