@@ -66,6 +66,18 @@
                                                           destination:_destinationViewController
                                                        performHandler:^{}];
     [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
+    BOOL prepareMethodWasCalled = _sourceViewController.prepareMethodWasCalled;
+    XCTAssertFalse(prepareMethodWasCalled);
+}
+
+- (void)testNotCallingInvalidPrepareForSegueWithEmptyIdentifier {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@""
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
+    BOOL prepareMethodWasCalled = _sourceViewController.prepareMethodWasCalled;
+    XCTAssertFalse(prepareMethodWasCalled);
 }
 
 @end

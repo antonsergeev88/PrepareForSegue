@@ -24,4 +24,9 @@
     return self;
 }
 
+- (BOOL)shouldPerform {
+    _shouldPerformMethodWasCalled = YES;
+    return YES;
+}
+
 @end

@@ -54,6 +54,16 @@
 - (void)testNotCallingShouldPerformSegueWithNoMethodForSelector {
     BOOL shouldPerformSegue = [_sourceViewController shouldPerformSegueWithIdentifier:@"TestingWithNoMethodForSelector"
                                                                                sender:_sourceViewController];
+    BOOL shouldPerformMethodWasCalled = _sourceViewController.shouldPerformMethodWasCalled;
+    XCTAssertFalse(shouldPerformMethodWasCalled);
+    XCTAssertTrue(shouldPerformSegue);
+}
+
+- (void)testNotCallingShouldPerformSegueWithEmptyIdentifier {
+    BOOL shouldPerformSegue = [_sourceViewController shouldPerformSegueWithIdentifier:@""
+                                                                               sender:_sourceViewController];
+    BOOL shouldPerformMethodWasCalled = _sourceViewController.shouldPerformMethodWasCalled;
+    XCTAssertFalse(shouldPerformMethodWasCalled);
     XCTAssertTrue(shouldPerformSegue);
 }
 

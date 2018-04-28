@@ -25,4 +25,8 @@
     return self;
 }
 
+- (void)prepareFor {
+    _prepareMethodWasCalled = YES;
+}
+
 @end
