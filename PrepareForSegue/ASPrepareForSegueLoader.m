@@ -18,7 +18,9 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
     NSString *prepareForSegueSelectorString = [NSString stringWithFormat:@"prepareFor%@", identifier];
     SEL prepareForSegueSelector = NSSelectorFromString(prepareForSegueSelectorString);
     SEL originalPrepareForSegueSelector = NSSelectorFromString(@"prepareForSegue:sender:");
-    if ([self respondsToSelector:prepareForSegueSelector]) {
+    Class viewControllerClass = object_getClass(self);
+    BOOL viewControllerRespondsToSelector = class_respondsToSelector(viewControllerClass, prepareForSegueSelector);
+    if (viewControllerRespondsToSelector) {
         Method prepareForSegueMethod = class_getInstanceMethod(self.class, prepareForSegueSelector);
         char *returnType = method_copyReturnType(prepareForSegueMethod);
         Method originalPrepareForSegueMethod = class_getInstanceMethod(self.class, originalPrepareForSegueSelector);
@@ -41,7 +43,9 @@ static BOOL as_shouldPerformSegueWithIdentifier_sender(UIViewController *self, S
     NSString *shouldPerformSegueSelectorString = [NSString stringWithFormat:@"shouldPerform%@", identifier];
     SEL shouldPerformSegueSelector = NSSelectorFromString(shouldPerformSegueSelectorString);
     SEL originalShouldPerformSegueSelector = NSSelectorFromString(@"shouldPerformSegueWithIdentifier:sender:");
-    if ([self respondsToSelector:shouldPerformSegueSelector]) {
+    Class viewControllerClass = object_getClass(self);
+    BOOL viewControllerRespondsToSelector = class_respondsToSelector(viewControllerClass, shouldPerformSegueSelector);
+    if (viewControllerRespondsToSelector) {
         Method shouldPerformSegueMethod = class_getInstanceMethod(self.class, shouldPerformSegueSelector);
         char *returnType = method_copyReturnType(shouldPerformSegueMethod);
         Method originalShouldPerformSegueMethod = class_getInstanceMethod(self.class, originalShouldPerformSegueSelector);
