@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#import <objc/message.h>
 
 static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryboardSegue *segue, id sender) {
     NSString *identifier = segue.identifier;
@@ -23,16 +24,18 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
         Method originalPrepareForSegueMethod = class_getInstanceMethod(self.class, originalPrepareForSegueSelector);
         char *originalReturnType = method_copyReturnType(originalPrepareForSegueMethod);
         if (!strcmp(returnType, originalReturnType)) {
-            [self performSelector:prepareForSegueSelector];
+            void (*voidReturnMessageSend)(id receiver, SEL operation);
+            voidReturnMessageSend = (void(*)(id, SEL))objc_msgSend;
+            voidReturnMessageSend(self, prepareForSegueSelector);
         }
         free(returnType);
         free(originalReturnType);
     }
 }
 
-static void as_shouldPerformSegueWithIdentifier_sender(UIViewController *self, SEL _cmd, NSString *identifier, id sender) {
+static BOOL as_shouldPerformSegueWithIdentifier_sender(UIViewController *self, SEL _cmd, NSString *identifier, id sender) {
     if (!identifier.length) {
-        return;
+        return YES;
     }
     NSString *shouldPerformSegueSelectorString = [NSString stringWithFormat:@"shouldPerform%@", identifier];
     SEL shouldPerformSegueSelector = NSSelectorFromString(shouldPerformSegueSelectorString);
@@ -43,11 +46,15 @@ static void as_shouldPerformSegueWithIdentifier_sender(UIViewController *self, S
         Method originalShouldPerformSegueMethod = class_getInstanceMethod(self.class, originalShouldPerformSegueSelector);
         char *originalReturnType = method_copyReturnType(originalShouldPerformSegueMethod);
         if (!strcmp(returnType, originalReturnType)) {
-            [self performSelector:shouldPerformSegueSelector];
+            BOOL (*boolReturnMessageSend)(id receiver, SEL operation);
+            boolReturnMessageSend = (BOOL(*)(id, SEL))objc_msgSend;
+            BOOL shouldPerformSegue = boolReturnMessageSend(self, shouldPerformSegueSelector);
+            return shouldPerformSegue;
         }
         free(returnType);
         free(originalReturnType);
     }
+    return YES;
 }
 
 @interface ASPrepareForSegueLoader : NSObject

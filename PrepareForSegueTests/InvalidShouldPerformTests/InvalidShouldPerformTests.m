@@ -28,24 +28,33 @@
 }
 
 - (void)testNotCallingShouldPerformSegueWithNoReturnValue {
-    [_sourceViewController shouldPerformSegueWithIdentifier:@"TestingWithNoReturnValue"
+    BOOL shouldPerformSegue = [_sourceViewController shouldPerformSegueWithIdentifier:@"TestingWithNoReturnValue"
                                                      sender:_sourceViewController];
     BOOL shouldPerformMethodWasCalled = _sourceViewController.shouldPerformMethodWasCalled;
     XCTAssertFalse(shouldPerformMethodWasCalled);
+    XCTAssertTrue(shouldPerformSegue);
 }
 
 - (void)testNotCallingShouldPerformSegueWithPointerReturnValue {
-    [_sourceViewController shouldPerformSegueWithIdentifier:@"TestingWithPointerReturnValue"
+    BOOL shouldPerformSegue = [_sourceViewController shouldPerformSegueWithIdentifier:@"TestingWithPointerReturnValue"
                                                      sender:_sourceViewController];
     BOOL shouldPerformMethodWasCalled = _sourceViewController.shouldPerformMethodWasCalled;
     XCTAssertFalse(shouldPerformMethodWasCalled);
+    XCTAssertTrue(shouldPerformSegue);
 }
 
 - (void)testNotCallingShouldPerformSegueWithObjectReturnValue {
-    [_sourceViewController shouldPerformSegueWithIdentifier:@"TestingWithObjectReturnValue"
+    BOOL shouldPerformSegue = [_sourceViewController shouldPerformSegueWithIdentifier:@"TestingWithObjectReturnValue"
                                                      sender:_sourceViewController];
     BOOL shouldPerformMethodWasCalled = _sourceViewController.shouldPerformMethodWasCalled;
     XCTAssertFalse(shouldPerformMethodWasCalled);
+    XCTAssertTrue(shouldPerformSegue);
+}
+
+- (void)testNotCallingShouldPerformSegueWithNoMethodForSelector {
+    BOOL shouldPerformSegue = [_sourceViewController shouldPerformSegueWithIdentifier:@"TestingWithNoMethodForSelector"
+                                                                               sender:_sourceViewController];
+    XCTAssertTrue(shouldPerformSegue);
 }
 
 @end

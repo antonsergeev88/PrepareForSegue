@@ -60,4 +60,12 @@
     XCTAssertFalse(prepareMethodWasCalled);
 }
 
+- (void)testNotCallingInvalidPrepareForSegueWithNoMethodForSelector {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithNoMethodForSelector"
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
+}
+
 @end
