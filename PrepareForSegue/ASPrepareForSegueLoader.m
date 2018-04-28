@@ -23,13 +23,14 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
         char *returnType = method_copyReturnType(prepareForSegueMethod);
         Method originalPrepareForSegueMethod = class_getInstanceMethod(self.class, originalPrepareForSegueSelector);
         char *originalReturnType = method_copyReturnType(originalPrepareForSegueMethod);
-        if (!strcmp(returnType, originalReturnType)) {
+        BOOL viewControllerHasValidPrepareMethod = !strcmp(returnType, originalReturnType);
+        free(returnType);
+        free(originalReturnType);
+        if (viewControllerHasValidPrepareMethod) {
             void (*voidReturnMessageSend)(id receiver, SEL operation);
             voidReturnMessageSend = (void(*)(id, SEL))objc_msgSend;
             voidReturnMessageSend(self, prepareForSegueSelector);
         }
-        free(returnType);
-        free(originalReturnType);
     }
 }
 
@@ -45,14 +46,15 @@ static BOOL as_shouldPerformSegueWithIdentifier_sender(UIViewController *self, S
         char *returnType = method_copyReturnType(shouldPerformSegueMethod);
         Method originalShouldPerformSegueMethod = class_getInstanceMethod(self.class, originalShouldPerformSegueSelector);
         char *originalReturnType = method_copyReturnType(originalShouldPerformSegueMethod);
-        if (!strcmp(returnType, originalReturnType)) {
+        BOOL viewControllerHasValidShouldPerformMethod = !strcmp(returnType, originalReturnType);
+        free(returnType);
+        free(originalReturnType);
+        if (viewControllerHasValidShouldPerformMethod) {
             BOOL (*boolReturnMessageSend)(id receiver, SEL operation);
             boolReturnMessageSend = (BOOL(*)(id, SEL))objc_msgSend;
             BOOL shouldPerformSegue = boolReturnMessageSend(self, shouldPerformSegueSelector);
             return shouldPerformSegue;
         }
-        free(returnType);
-        free(originalReturnType);
     }
     return YES;
 }
