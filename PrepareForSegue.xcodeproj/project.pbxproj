@@ -63,6 +63,7 @@
 		6043498E2094C3A200127C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		604349942094C61000127C7A /* MainViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		604349962094C8CB00127C7A /* SamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplesTableViewController.swift; sourceTree = "<group>"; };
+		604349982094D90B00127C7A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		609DA2082093DA5400409FB3 /* ASPrepareForSegueLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASPrepareForSegueLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +97,7 @@
 		600E1B712093993E00B1AD9C = {
 			isa = PBXGroup;
 			children = (
+				604349982094D90B00127C7A /* README.md */,
 				600E1B7D2093993E00B1AD9C /* PrepareForSegue */,
 				600E1B882093993F00B1AD9C /* PrepareForSegueTests */,
 				604349812094C3A200127C7A /* PrepareForSegueSample */,
