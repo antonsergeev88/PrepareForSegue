@@ -80,4 +80,24 @@
     XCTAssertFalse(prepareMethodWasCalled);
 }
 
+- (void)testNotCallingInvalidPrepareForSegueWithScalarReturnValuePerformance {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithScalarReturnValue"
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [self measureBlock:^{
+        [self->_sourceViewController prepareForSegue:segue sender:self->_sourceViewController];
+    }];
+}
+
+- (void)testNotCallingInvalidPrepareForSegueWithNoMethodForSelectorPerformance {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithNoMethodForSelector"
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [self measureBlock:^{
+        [self->_sourceViewController prepareForSegue:segue sender:self->_sourceViewController];
+    }];
+}
+
 @end
