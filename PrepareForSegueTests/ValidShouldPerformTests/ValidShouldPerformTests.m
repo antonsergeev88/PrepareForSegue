@@ -33,4 +33,11 @@
     XCTAssertTrue(shouldPerformMethodWasCalled);
 }
 
+- (void)testCallingShouldPerformPerformance {
+    [self measureBlock:^{
+        [self->_sourceViewController shouldPerformSegueWithIdentifier:@"Testing"
+                                                               sender:self->_sourceViewController];
+    }];
+}
+
 @end
