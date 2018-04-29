@@ -90,8 +90,38 @@
     }];
 }
 
+- (void)testNotCallingInvalidPrepareForSegueWithPointerReturnValuePerformance {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithPointerReturnValue"
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [self measureBlock:^{
+        [self->_sourceViewController prepareForSegue:segue sender:self->_sourceViewController];
+    }];
+}
+
+- (void)testNotCallingInvalidPrepareForSegueWithObjectReturnValuePerformance {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithObjectReturnValue"
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [self measureBlock:^{
+        [self->_sourceViewController prepareForSegue:segue sender:self->_sourceViewController];
+    }];
+}
+
 - (void)testNotCallingInvalidPrepareForSegueWithNoMethodForSelectorPerformance {
     UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithNoMethodForSelector"
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [self measureBlock:^{
+        [self->_sourceViewController prepareForSegue:segue sender:self->_sourceViewController];
+    }];
+}
+
+- (void)testNotCallingInvalidPrepareForSegueWithEmptyIdentifierPerformance {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@""
                                                                source:_sourceViewController
                                                           destination:_destinationViewController
                                                        performHandler:^{}];
