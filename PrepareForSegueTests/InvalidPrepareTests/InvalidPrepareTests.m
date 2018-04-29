@@ -40,46 +40,6 @@
     XCTAssertFalse(prepareMethodWasCalled);
 }
 
-- (void)testNotCallingInvalidPrepareForSegueWithPointerReturnValue {
-    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithPointerReturnValue"
-                                                               source:_sourceViewController
-                                                          destination:_destinationViewController
-                                                       performHandler:^{}];
-    [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
-    BOOL prepareMethodWasCalled = _sourceViewController.prepareMethodWasCalled;
-    XCTAssertFalse(prepareMethodWasCalled);
-}
-
-- (void)testNotCallingInvalidPrepareForSegueWithObjectReturnValue {
-    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithObjectReturnValue"
-                                                               source:_sourceViewController
-                                                          destination:_destinationViewController
-                                                       performHandler:^{}];
-    [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
-    BOOL prepareMethodWasCalled = _sourceViewController.prepareMethodWasCalled;
-    XCTAssertFalse(prepareMethodWasCalled);
-}
-
-- (void)testNotCallingInvalidPrepareForSegueWithNoMethodForSelector {
-    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithNoMethodForSelector"
-                                                               source:_sourceViewController
-                                                          destination:_destinationViewController
-                                                       performHandler:^{}];
-    [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
-    BOOL prepareMethodWasCalled = _sourceViewController.prepareMethodWasCalled;
-    XCTAssertFalse(prepareMethodWasCalled);
-}
-
-- (void)testNotCallingInvalidPrepareForSegueWithEmptyIdentifier {
-    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@""
-                                                               source:_sourceViewController
-                                                          destination:_destinationViewController
-                                                       performHandler:^{}];
-    [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
-    BOOL prepareMethodWasCalled = _sourceViewController.prepareMethodWasCalled;
-    XCTAssertFalse(prepareMethodWasCalled);
-}
-
 - (void)testNotCallingInvalidPrepareForSegueWithScalarReturnValuePerformance {
     UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithScalarReturnValue"
                                                                source:_sourceViewController
@@ -88,6 +48,16 @@
     [self measureBlock:^{
         [self->_sourceViewController prepareForSegue:segue sender:self->_sourceViewController];
     }];
+}
+
+- (void)testNotCallingInvalidPrepareForSegueWithPointerReturnValue {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithPointerReturnValue"
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
+    BOOL prepareMethodWasCalled = _sourceViewController.prepareMethodWasCalled;
+    XCTAssertFalse(prepareMethodWasCalled);
 }
 
 - (void)testNotCallingInvalidPrepareForSegueWithPointerReturnValuePerformance {
@@ -100,6 +70,16 @@
     }];
 }
 
+- (void)testNotCallingInvalidPrepareForSegueWithObjectReturnValue {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithObjectReturnValue"
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
+    BOOL prepareMethodWasCalled = _sourceViewController.prepareMethodWasCalled;
+    XCTAssertFalse(prepareMethodWasCalled);
+}
+
 - (void)testNotCallingInvalidPrepareForSegueWithObjectReturnValuePerformance {
     UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithObjectReturnValue"
                                                                source:_sourceViewController
@@ -110,6 +90,16 @@
     }];
 }
 
+- (void)testNotCallingInvalidPrepareForSegueWithNoMethodForSelector {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithNoMethodForSelector"
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
+    BOOL prepareMethodWasCalled = _sourceViewController.prepareMethodWasCalled;
+    XCTAssertFalse(prepareMethodWasCalled);
+}
+
 - (void)testNotCallingInvalidPrepareForSegueWithNoMethodForSelectorPerformance {
     UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"TestingWithNoMethodForSelector"
                                                                source:_sourceViewController
@@ -118,6 +108,16 @@
     [self measureBlock:^{
         [self->_sourceViewController prepareForSegue:segue sender:self->_sourceViewController];
     }];
+}
+
+- (void)testNotCallingInvalidPrepareForSegueWithEmptyIdentifier {
+    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@""
+                                                               source:_sourceViewController
+                                                          destination:_destinationViewController
+                                                       performHandler:^{}];
+    [_sourceViewController prepareForSegue:segue sender:_sourceViewController];
+    BOOL prepareMethodWasCalled = _sourceViewController.prepareMethodWasCalled;
+    XCTAssertFalse(prepareMethodWasCalled);
 }
 
 - (void)testNotCallingInvalidPrepareForSegueWithEmptyIdentifierPerformance {
