@@ -10,6 +10,6 @@
 
 @interface ValidPrepareTestsViewController : UIViewController
 
-@property (nonatomic) BOOL prepareMethodWasCalled;
+@property (nonatomic, readonly) BOOL prepareMethodWasCalled;
 
 @end

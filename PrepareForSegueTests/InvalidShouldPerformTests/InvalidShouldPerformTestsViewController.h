@@ -10,6 +10,6 @@
 
 @interface InvalidShouldPerformTestsViewController : UIViewController
 
-@property (nonatomic) BOOL shouldPerformMethodWasCalled;
+@property (nonatomic, readonly) BOOL shouldPerformMethodWasCalled;
 
 @end
