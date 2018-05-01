@@ -24,6 +24,8 @@
 		604349932094C3B100127C7A /* PrepareForSegue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600E1B7B2093993E00B1AD9C /* PrepareForSegue.framework */; };
 		604349952094C61000127C7A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604349942094C61000127C7A /* MainViewController.swift */; };
 		604349972094C8CB00127C7A /* SamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604349962094C8CB00127C7A /* SamplesTableViewController.swift */; };
+		60717AAD2096DD1800A714C3 /* OverridingImplementationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60717AAC2096DD1800A714C3 /* OverridingImplementationTests.m */; };
+		60717AB02096DD3200A714C3 /* OverridingImplementationTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60717AAF2096DD3200A714C3 /* OverridingImplementationTestsViewController.m */; };
 		609DA20A2093DA5400409FB3 /* ASPrepareForSegueLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 609DA2082093DA5400409FB3 /* ASPrepareForSegueLoader.m */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,9 @@
 		6043498E2094C3A200127C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		604349942094C61000127C7A /* MainViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		604349962094C8CB00127C7A /* SamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplesTableViewController.swift; sourceTree = "<group>"; };
+		60717AAC2096DD1800A714C3 /* OverridingImplementationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverridingImplementationTests.m; sourceTree = "<group>"; };
+		60717AAE2096DD3200A714C3 /* OverridingImplementationTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverridingImplementationTestsViewController.h; sourceTree = "<group>"; };
+		60717AAF2096DD3200A714C3 /* OverridingImplementationTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverridingImplementationTestsViewController.m; sourceTree = "<group>"; };
 		609DA2082093DA5400409FB3 /* ASPrepareForSegueLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASPrepareForSegueLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +137,7 @@
 				600E1BA32093CFB500B1AD9C /* ValidShouldPerformTests */,
 				600E1BA92093D26200B1AD9C /* InvalidShouldPerformTests */,
 				600E1B8B2093993F00B1AD9C /* Info.plist */,
+				60717AAB2096DCE300A714C3 /* OverridingImplementationTests */,
 			);
 			path = PrepareForSegueTests;
 			sourceTree = "<group>";
@@ -195,6 +201,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		60717AAB2096DCE300A714C3 /* OverridingImplementationTests */ = {
+			isa = PBXGroup;
+			children = (
+				60717AAC2096DD1800A714C3 /* OverridingImplementationTests.m */,
+				60717AAE2096DD3200A714C3 /* OverridingImplementationTestsViewController.h */,
+				60717AAF2096DD3200A714C3 /* OverridingImplementationTestsViewController.m */,
+			);
+			path = OverridingImplementationTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,11 +364,13 @@
 				600E1B9C2093AA6100B1AD9C /* ValidPrepareTestsViewController.m in Sources */,
 				600E1BAB2093D27B00B1AD9C /* InvalidShouldPerformTests.m in Sources */,
 				600E1BA52093CFF000B1AD9C /* ValidShouldPerformTests.m in Sources */,
+				60717AB02096DD3200A714C3 /* OverridingImplementationTestsViewController.m in Sources */,
 				600E1B972093A87C00B1AD9C /* ValidPrepareTests.m in Sources */,
 				600E1BA22093CCE400B1AD9C /* InvalidPrepareTestsViewController.m in Sources */,
 				600E1BA82093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m in Sources */,
 				600E1B9F2093CC6900B1AD9C /* InvalidPrepareTests.m in Sources */,
 				600E1BAE2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m in Sources */,
+				60717AAD2096DD1800A714C3 /* OverridingImplementationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
