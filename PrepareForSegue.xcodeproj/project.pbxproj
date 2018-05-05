@@ -24,6 +24,8 @@
 		604349932094C3B100127C7A /* PrepareForSegue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600E1B7B2093993E00B1AD9C /* PrepareForSegue.framework */; };
 		604349952094C61000127C7A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604349942094C61000127C7A /* MainViewController.swift */; };
 		604349972094C8CB00127C7A /* SamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604349962094C8CB00127C7A /* SamplesTableViewController.swift */; };
+		6047FC97209D579000906100 /* ValidPrepareWithSenderTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6047FC96209D579000906100 /* ValidPrepareWithSenderTestsViewController.m */; };
+		6047FC99209D581300906100 /* ValidPrepareWithSenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6047FC98209D581300906100 /* ValidPrepareWithSenderTests.m */; };
 		60717AAD2096DD1800A714C3 /* OverridingImplementationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60717AAC2096DD1800A714C3 /* OverridingImplementationTests.m */; };
 		60717AB02096DD3200A714C3 /* OverridingImplementationTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60717AAF2096DD3200A714C3 /* OverridingImplementationTestsViewController.m */; };
 		609DA20A2093DA5400409FB3 /* ASPrepareForSegueLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 609DA2082093DA5400409FB3 /* ASPrepareForSegueLoader.m */; };
@@ -65,6 +67,9 @@
 		6043498E2094C3A200127C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		604349942094C61000127C7A /* MainViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		604349962094C8CB00127C7A /* SamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplesTableViewController.swift; sourceTree = "<group>"; };
+		6047FC95209D579000906100 /* ValidPrepareWithSenderTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidPrepareWithSenderTestsViewController.h; sourceTree = "<group>"; };
+		6047FC96209D579000906100 /* ValidPrepareWithSenderTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidPrepareWithSenderTestsViewController.m; sourceTree = "<group>"; };
+		6047FC98209D581300906100 /* ValidPrepareWithSenderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidPrepareWithSenderTests.m; sourceTree = "<group>"; };
 		60717AAC2096DD1800A714C3 /* OverridingImplementationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverridingImplementationTests.m; sourceTree = "<group>"; };
 		60717AAE2096DD3200A714C3 /* OverridingImplementationTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverridingImplementationTestsViewController.h; sourceTree = "<group>"; };
 		60717AAF2096DD3200A714C3 /* OverridingImplementationTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverridingImplementationTestsViewController.m; sourceTree = "<group>"; };
@@ -133,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				600E1B952093A81D00B1AD9C /* ValidPrepareTests */,
+				6047FC94209D570C00906100 /* ValidPrepareWithSenderTests */,
 				600E1B9D2093CC4100B1AD9C /* InvalidPrepareTests */,
 				600E1BA32093CFB500B1AD9C /* ValidShouldPerformTests */,
 				600E1BA92093D26200B1AD9C /* InvalidShouldPerformTests */,
@@ -201,6 +207,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6047FC94209D570C00906100 /* ValidPrepareWithSenderTests */ = {
+			isa = PBXGroup;
+			children = (
+				6047FC98209D581300906100 /* ValidPrepareWithSenderTests.m */,
+				6047FC95209D579000906100 /* ValidPrepareWithSenderTestsViewController.h */,
+				6047FC96209D579000906100 /* ValidPrepareWithSenderTestsViewController.m */,
+			);
+			path = ValidPrepareWithSenderTests;
 			sourceTree = "<group>";
 		};
 		60717AAB2096DCE300A714C3 /* OverridingImplementationTests */ = {
@@ -368,6 +384,8 @@
 				600E1B972093A87C00B1AD9C /* ValidPrepareTests.m in Sources */,
 				600E1BA22093CCE400B1AD9C /* InvalidPrepareTestsViewController.m in Sources */,
 				600E1BA82093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m in Sources */,
+				6047FC99209D581300906100 /* ValidPrepareWithSenderTests.m in Sources */,
+				6047FC97209D579000906100 /* ValidPrepareWithSenderTestsViewController.m in Sources */,
 				600E1B9F2093CC6900B1AD9C /* InvalidPrepareTests.m in Sources */,
 				600E1BAE2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m in Sources */,
 				60717AAD2096DD1800A714C3 /* OverridingImplementationTests.m in Sources */,
