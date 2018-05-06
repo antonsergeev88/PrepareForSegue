@@ -8,10 +8,6 @@
 
 #import "ValidPrepareWithAndWithoutSenderTestsViewController.h"
 
-@interface ValidPrepareWithAndWithoutSenderTestsViewController ()
-
-@end
-
 @implementation ValidPrepareWithAndWithoutSenderTestsViewController
 
 - (void)prepareForTesting {
