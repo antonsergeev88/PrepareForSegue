@@ -37,33 +37,36 @@ static void prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryboar
     SEL originalPrepareForSegueSelector = NSSelectorFromString(@"prepareForSegue:sender:");
     Method originalPrepareForSegueMethod = class_getInstanceMethod(viewControllerClass, originalPrepareForSegueSelector);
 
-    NSString *prepareForSegueWithSenderSelectorString = [NSString stringWithFormat:@"prepareFor%@WithSender:", identifier];
-    SEL prepareForSegueWithSenderSelector = NSSelectorFromString(prepareForSegueWithSenderSelectorString);
-    if (class_respondsToSelector(viewControllerClass, prepareForSegueWithSenderSelector)) {
-        Method prepareForSegueMethod = class_getInstanceMethod(viewControllerClass, prepareForSegueWithSenderSelector);
-        BOOL returnTypeIsValid = !compareMethodReturnTypes(prepareForSegueMethod, originalPrepareForSegueMethod);
-        BOOL argumentIsValid = !compareMethodArgumentTypes(prepareForSegueMethod, 2,
-                                                           originalPrepareForSegueMethod, 3);
-        BOOL viewControllerHasValidPrepareMethod = returnTypeIsValid && argumentIsValid;
-        if (viewControllerHasValidPrepareMethod) {
-            void (*voidReturnMessageSend)(id receiver, SEL operation, id sender);
-            voidReturnMessageSend = (void(*)(id, SEL, id))objc_msgSend;
-            voidReturnMessageSend(self, prepareForSegueWithSenderSelector, sender);
-            return;
+    {
+        NSString *prepareForSegueSelectorString = [NSString stringWithFormat:@"prepareFor%@WithSender:", identifier];
+        SEL prepareForSegueSelector = NSSelectorFromString(prepareForSegueSelectorString);
+        if (class_respondsToSelector(viewControllerClass, prepareForSegueSelector)) {
+            Method prepareForSegueMethod = class_getInstanceMethod(viewControllerClass, prepareForSegueSelector);
+            BOOL returnTypeIsValid = !compareMethodReturnTypes(prepareForSegueMethod, originalPrepareForSegueMethod);
+            BOOL argumentIsValid = !compareMethodArgumentTypes(prepareForSegueMethod, 2, originalPrepareForSegueMethod, 3);
+            BOOL viewControllerHasValidPrepareMethod = returnTypeIsValid && argumentIsValid;
+            if (viewControllerHasValidPrepareMethod) {
+                void (*voidReturnMessageSend)(id receiver, SEL operation, id sender);
+                voidReturnMessageSend = (void(*)(id, SEL, id))objc_msgSend;
+                voidReturnMessageSend(self, prepareForSegueSelector, sender);
+                return;
+            }
         }
     }
 
-    NSString *prepareForSegueSelectorString = [NSString stringWithFormat:@"prepareFor%@", identifier];
-    SEL prepareForSegueSelector = NSSelectorFromString(prepareForSegueSelectorString);
-    if (class_respondsToSelector(viewControllerClass, prepareForSegueSelector)) {
-        Method prepareForSegueMethod = class_getInstanceMethod(viewControllerClass, prepareForSegueSelector);
-        BOOL returnTypeIsValid = !compareMethodReturnTypes(prepareForSegueMethod, originalPrepareForSegueMethod);
-        BOOL viewControllerHasValidPrepareMethod = returnTypeIsValid;
-        if (viewControllerHasValidPrepareMethod) {
-            void (*voidReturnMessageSend)(id receiver, SEL operation);
-            voidReturnMessageSend = (void(*)(id, SEL))objc_msgSend;
-            voidReturnMessageSend(self, prepareForSegueSelector);
-            return;
+    {
+        NSString *prepareForSegueSelectorString = [NSString stringWithFormat:@"prepareFor%@", identifier];
+        SEL prepareForSegueSelector = NSSelectorFromString(prepareForSegueSelectorString);
+        if (class_respondsToSelector(viewControllerClass, prepareForSegueSelector)) {
+            Method prepareForSegueMethod = class_getInstanceMethod(viewControllerClass, prepareForSegueSelector);
+            BOOL returnTypeIsValid = !compareMethodReturnTypes(prepareForSegueMethod, originalPrepareForSegueMethod);
+            BOOL viewControllerHasValidPrepareMethod = returnTypeIsValid;
+            if (viewControllerHasValidPrepareMethod) {
+                void (*voidReturnMessageSend)(id receiver, SEL operation);
+                voidReturnMessageSend = (void(*)(id, SEL))objc_msgSend;
+                voidReturnMessageSend(self, prepareForSegueSelector);
+                return;
+            }
         }
     }
 }
