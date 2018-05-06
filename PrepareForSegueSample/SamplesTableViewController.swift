@@ -32,12 +32,12 @@ class SamplesTableViewController: UITableViewController {
     }
 
     @objc func shouldPerformFourthSample() -> Bool {
-        print("PrepareForSegue: \(self.title!) is asked if it should perform fourth sample. It returns \"false\", so preparing method will never called.")
+        print("PrepareForSegue: \(self.title!) is asked if it should perform fourth sample. It returns \"false\", so preparing method will be never called.")
         return false
     }
 
     @objc func prepareForFourthSample() {
-        fatalError("Will never called")
+        fatalError("Will be never called")
     }
 
 }
