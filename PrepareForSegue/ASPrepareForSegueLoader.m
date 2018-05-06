@@ -26,9 +26,9 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
     BOOL viewControllerRespondsToSelectorWithSender = class_respondsToSelector(viewControllerClass,
                                                                                prepareForSegueWithSenderSelector);
     if (viewControllerRespondsToSelectorWithSender) {
-        Method prepareForSegueMethod = class_getInstanceMethod(self.class, prepareForSegueWithSenderSelector);
+        Method prepareForSegueMethod = class_getInstanceMethod(viewControllerClass, prepareForSegueWithSenderSelector);
         char *returnType = method_copyReturnType(prepareForSegueMethod);
-        Method originalPrepareForSegueMethod = class_getInstanceMethod(self.class, originalPrepareForSegueSelector);
+        Method originalPrepareForSegueMethod = class_getInstanceMethod(viewControllerClass, originalPrepareForSegueSelector);
         char *originalReturnType = method_copyReturnType(originalPrepareForSegueMethod);
         BOOL viewControllerHasValidPrepareMethod = !strcmp(returnType, originalReturnType);
         free(returnType);
@@ -39,9 +39,9 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
             voidReturnMessageSend(self, prepareForSegueWithSenderSelector, sender);
         }
     } else if (viewControllerRespondsToSelector) {
-        Method prepareForSegueMethod = class_getInstanceMethod(self.class, prepareForSegueSelector);
+        Method prepareForSegueMethod = class_getInstanceMethod(viewControllerClass, prepareForSegueSelector);
         char *returnType = method_copyReturnType(prepareForSegueMethod);
-        Method originalPrepareForSegueMethod = class_getInstanceMethod(self.class, originalPrepareForSegueSelector);
+        Method originalPrepareForSegueMethod = class_getInstanceMethod(viewControllerClass, originalPrepareForSegueSelector);
         char *originalReturnType = method_copyReturnType(originalPrepareForSegueMethod);
         BOOL viewControllerHasValidPrepareMethod = !strcmp(returnType, originalReturnType);
         free(returnType);
