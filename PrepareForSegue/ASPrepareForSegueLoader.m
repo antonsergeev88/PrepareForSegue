@@ -10,38 +10,40 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryboardSegue *segue, id sender) {
+static int compareMethodReturnTypes(Method firstMethod, Method secondMethod) {
+    char firstMethodReturnType[2] = {0};
+    method_getReturnType(firstMethod, firstMethodReturnType, sizeof(firstMethodReturnType) - 1);
+    char secondMethodReturnType[2] = {0};
+    method_getReturnType(secondMethod, secondMethodReturnType, sizeof(secondMethodReturnType) - 1);
+    return strcmp(firstMethodReturnType, secondMethodReturnType);
+}
+
+static int compareMethodArgumentTypes(Method firstMethod, unsigned int firstIndex,
+                                      Method secondMethod, unsigned int secondIndex) {
+    char firstMethodArgumentType[2] = {0};
+    method_getArgumentType(firstMethod, firstIndex, firstMethodArgumentType, sizeof(firstMethodArgumentType) - 1);
+    char secondMethodArgumentType[2] = {0};
+    method_getArgumentType(secondMethod, secondIndex, secondMethodArgumentType, sizeof(secondMethodArgumentType) - 1);
+    return strcmp(firstMethodArgumentType, secondMethodArgumentType);
+}
+
+static void prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryboardSegue *segue, id sender) {
     NSString *identifier = segue.identifier;
     if (!identifier.length) {
         return;
     }
-    NSString *prepareForSegueSelectorString = [NSString stringWithFormat:@"prepareFor%@", identifier];
-    SEL prepareForSegueSelector = NSSelectorFromString(prepareForSegueSelectorString);
-    NSString *prepareForSegueWithSenderSelectorString = [NSString stringWithFormat:@"prepareFor%@WithSender:",
-                                                         identifier];
-    SEL prepareForSegueWithSenderSelector = NSSelectorFromString(prepareForSegueWithSenderSelectorString);
-    SEL originalPrepareForSegueSelector = NSSelectorFromString(@"prepareForSegue:sender:");
+
     Class viewControllerClass = object_getClass(self);
-    BOOL viewControllerRespondsToSelector = class_respondsToSelector(viewControllerClass, prepareForSegueSelector);
-    BOOL viewControllerRespondsToSelectorWithSender = class_respondsToSelector(viewControllerClass,
-                                                                               prepareForSegueWithSenderSelector);
-    if (viewControllerRespondsToSelectorWithSender) {
+    SEL originalPrepareForSegueSelector = NSSelectorFromString(@"prepareForSegue:sender:");
+    Method originalPrepareForSegueMethod = class_getInstanceMethod(viewControllerClass, originalPrepareForSegueSelector);
+
+    NSString *prepareForSegueWithSenderSelectorString = [NSString stringWithFormat:@"prepareFor%@WithSender:", identifier];
+    SEL prepareForSegueWithSenderSelector = NSSelectorFromString(prepareForSegueWithSenderSelectorString);
+    if (class_respondsToSelector(viewControllerClass, prepareForSegueWithSenderSelector)) {
         Method prepareForSegueMethod = class_getInstanceMethod(viewControllerClass, prepareForSegueWithSenderSelector);
-        Method originalPrepareForSegueMethod = class_getInstanceMethod(viewControllerClass,
-                                                                       originalPrepareForSegueSelector);
-
-        char *returnType = method_copyReturnType(prepareForSegueMethod);
-        char *originalReturnType = method_copyReturnType(originalPrepareForSegueMethod);
-        BOOL returnTypeIsValid = !strcmp(returnType, originalReturnType);
-        free(returnType);
-        free(originalReturnType);
-
-        char *argumentType = method_copyArgumentType(prepareForSegueMethod, 2);
-        char *originalArgumentType = method_copyArgumentType(originalPrepareForSegueMethod, 3);
-        BOOL argumentIsValid = !strcmp(argumentType, originalArgumentType);
-        free(argumentType);
-        free(originalArgumentType);
-
+        BOOL returnTypeIsValid = !compareMethodReturnTypes(prepareForSegueMethod, originalPrepareForSegueMethod);
+        BOOL argumentIsValid = !compareMethodArgumentTypes(prepareForSegueMethod, 2,
+                                                           originalPrepareForSegueMethod, 3);
         BOOL viewControllerHasValidPrepareMethod = returnTypeIsValid && argumentIsValid;
         if (viewControllerHasValidPrepareMethod) {
             void (*voidReturnMessageSend)(id receiver, SEL operation, id sender);
@@ -50,17 +52,12 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
             return;
         }
     }
-    if (viewControllerRespondsToSelector) {
+
+    NSString *prepareForSegueSelectorString = [NSString stringWithFormat:@"prepareFor%@", identifier];
+    SEL prepareForSegueSelector = NSSelectorFromString(prepareForSegueSelectorString);
+    if (class_respondsToSelector(viewControllerClass, prepareForSegueSelector)) {
         Method prepareForSegueMethod = class_getInstanceMethod(viewControllerClass, prepareForSegueSelector);
-        Method originalPrepareForSegueMethod = class_getInstanceMethod(viewControllerClass,
-                                                                       originalPrepareForSegueSelector);
-
-        char *returnType = method_copyReturnType(prepareForSegueMethod);
-        char *originalReturnType = method_copyReturnType(originalPrepareForSegueMethod);
-        BOOL returnTypeIsValid = !strcmp(returnType, originalReturnType);
-        free(returnType);
-        free(originalReturnType);
-
+        BOOL returnTypeIsValid = !compareMethodReturnTypes(prepareForSegueMethod, originalPrepareForSegueMethod);
         BOOL viewControllerHasValidPrepareMethod = returnTypeIsValid;
         if (viewControllerHasValidPrepareMethod) {
             void (*voidReturnMessageSend)(id receiver, SEL operation);
@@ -71,7 +68,7 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
     }
 }
 
-static BOOL as_shouldPerformSegueWithIdentifier_sender(UIViewController *self,
+static BOOL shouldPerformSegueWithIdentifier_sender(UIViewController *self,
                                                        SEL _cmd,
                                                        NSString *identifier,
                                                        id sender) {
@@ -113,11 +110,11 @@ static BOOL as_shouldPerformSegueWithIdentifier_sender(UIViewController *self,
 
     SEL prepareForSegueSelector = NSSelectorFromString(@"prepareForSegue:sender:");
     Method prepareForSegueMethod = class_getInstanceMethod(viewControllerClass, prepareForSegueSelector);
-    method_setImplementation(prepareForSegueMethod, (IMP)as_prepareForSegue_sender);
+    method_setImplementation(prepareForSegueMethod, (IMP)prepareForSegue_sender);
 
     SEL shouldPerformSegueSelector = NSSelectorFromString(@"shouldPerformSegueWithIdentifier:sender:");
     Method shouldPerformSegueMethod = class_getInstanceMethod(viewControllerClass, shouldPerformSegueSelector);
-    method_setImplementation(shouldPerformSegueMethod, (IMP)as_shouldPerformSegueWithIdentifier_sender);
+    method_setImplementation(shouldPerformSegueMethod, (IMP)shouldPerformSegueWithIdentifier_sender);
 }
 
 @end
