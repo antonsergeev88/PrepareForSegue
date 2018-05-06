@@ -25,20 +25,7 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
     BOOL viewControllerRespondsToSelector = class_respondsToSelector(viewControllerClass, prepareForSegueSelector);
     BOOL viewControllerRespondsToSelectorWithSender = class_respondsToSelector(viewControllerClass,
                                                                                prepareForSegueWithSenderSelector);
-    if (viewControllerRespondsToSelector) {
-        Method prepareForSegueMethod = class_getInstanceMethod(self.class, prepareForSegueSelector);
-        char *returnType = method_copyReturnType(prepareForSegueMethod);
-        Method originalPrepareForSegueMethod = class_getInstanceMethod(self.class, originalPrepareForSegueSelector);
-        char *originalReturnType = method_copyReturnType(originalPrepareForSegueMethod);
-        BOOL viewControllerHasValidPrepareMethod = !strcmp(returnType, originalReturnType);
-        free(returnType);
-        free(originalReturnType);
-        if (viewControllerHasValidPrepareMethod) {
-            void (*voidReturnMessageSend)(id receiver, SEL operation);
-            voidReturnMessageSend = (void(*)(id, SEL))objc_msgSend;
-            voidReturnMessageSend(self, prepareForSegueSelector);
-        }
-    } else if (viewControllerRespondsToSelectorWithSender) {
+    if (viewControllerRespondsToSelectorWithSender) {
         Method prepareForSegueMethod = class_getInstanceMethod(self.class, prepareForSegueWithSenderSelector);
         char *returnType = method_copyReturnType(prepareForSegueMethod);
         Method originalPrepareForSegueMethod = class_getInstanceMethod(self.class, originalPrepareForSegueSelector);
@@ -50,6 +37,19 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
             void (*voidReturnMessageSend)(id receiver, SEL operation, id sender);
             voidReturnMessageSend = (void(*)(id, SEL, id))objc_msgSend;
             voidReturnMessageSend(self, prepareForSegueWithSenderSelector, sender);
+        }
+    } else if (viewControllerRespondsToSelector) {
+        Method prepareForSegueMethod = class_getInstanceMethod(self.class, prepareForSegueSelector);
+        char *returnType = method_copyReturnType(prepareForSegueMethod);
+        Method originalPrepareForSegueMethod = class_getInstanceMethod(self.class, originalPrepareForSegueSelector);
+        char *originalReturnType = method_copyReturnType(originalPrepareForSegueMethod);
+        BOOL viewControllerHasValidPrepareMethod = !strcmp(returnType, originalReturnType);
+        free(returnType);
+        free(originalReturnType);
+        if (viewControllerHasValidPrepareMethod) {
+            void (*voidReturnMessageSend)(id receiver, SEL operation);
+            voidReturnMessageSend = (void(*)(id, SEL))objc_msgSend;
+            voidReturnMessageSend(self, prepareForSegueSelector);
         }
     }
 }
