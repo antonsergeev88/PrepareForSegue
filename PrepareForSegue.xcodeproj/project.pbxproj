@@ -37,6 +37,8 @@
 		60B2AE2B209FA1F90050E2C4 /* ValidShouldPerformWithSenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B2AE2A209FA1F90050E2C4 /* ValidShouldPerformWithSenderTests.m */; };
 		60B2AE2F209FA3F70050E2C4 /* ValidShouldPerformWithAndWithoutSenderTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B2AE2E209FA3F70050E2C4 /* ValidShouldPerformWithAndWithoutSenderTestsViewController.m */; };
 		60B2AE31209FA4020050E2C4 /* ValidShouldPerformWithAndWithoutSenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B2AE30209FA4020050E2C4 /* ValidShouldPerformWithAndWithoutSenderTests.m */; };
+		60B2AE35209FA62F0050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B2AE34209FA62F0050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTestsViewController.m */; };
+		60B2AE37209FA6430050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B2AE36209FA6430050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,9 @@
 		60B2AE2D209FA3F70050E2C4 /* ValidShouldPerformWithAndWithoutSenderTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidShouldPerformWithAndWithoutSenderTestsViewController.h; sourceTree = "<group>"; };
 		60B2AE2E209FA3F70050E2C4 /* ValidShouldPerformWithAndWithoutSenderTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidShouldPerformWithAndWithoutSenderTestsViewController.m; sourceTree = "<group>"; };
 		60B2AE30209FA4020050E2C4 /* ValidShouldPerformWithAndWithoutSenderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidShouldPerformWithAndWithoutSenderTests.m; sourceTree = "<group>"; };
+		60B2AE33209FA62F0050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidShouldPerformAndInvalidShouldPerformWithSenderTestsViewController.h; sourceTree = "<group>"; };
+		60B2AE34209FA62F0050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidShouldPerformAndInvalidShouldPerformWithSenderTestsViewController.m; sourceTree = "<group>"; };
+		60B2AE36209FA6430050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidShouldPerformAndInvalidShouldPerformWithSenderTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +170,7 @@
 				600E1BA32093CFB500B1AD9C /* ValidShouldPerformTests */,
 				60B2AE26209FA0F90050E2C4 /* ValidShouldPerformWithSenderTests */,
 				60B2AE2C209FA3A40050E2C4 /* ValidShouldPerformWithAndWithoutSenderTests */,
+				60B2AE32209FA5D00050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTests */,
 				600E1BA92093D26200B1AD9C /* InvalidShouldPerformTests */,
 				600E1B8B2093993F00B1AD9C /* Info.plist */,
 				60717AAB2096DCE300A714C3 /* OverridingImplementationTests */,
@@ -291,6 +297,16 @@
 				60B2AE2E209FA3F70050E2C4 /* ValidShouldPerformWithAndWithoutSenderTestsViewController.m */,
 			);
 			path = ValidShouldPerformWithAndWithoutSenderTests;
+			sourceTree = "<group>";
+		};
+		60B2AE32209FA5D00050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTests */ = {
+			isa = PBXGroup;
+			children = (
+				60B2AE36209FA6430050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTests.m */,
+				60B2AE33209FA62F0050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTestsViewController.h */,
+				60B2AE34209FA62F0050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTestsViewController.m */,
+			);
+			path = ValidShouldPerformAndInvalidShouldPerformWithSenderTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,9 +458,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				60B2AE1E209F47F20050E2C4 /* ValidPrepareWithAndWithoutSenderTests.m in Sources */,
+				60B2AE37209FA6430050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTests.m in Sources */,
 				600E1B9C2093AA6100B1AD9C /* ValidPrepareTestsViewController.m in Sources */,
 				600E1BAB2093D27B00B1AD9C /* InvalidShouldPerformTests.m in Sources */,
 				600E1BA52093CFF000B1AD9C /* ValidShouldPerformTests.m in Sources */,
+				60B2AE35209FA62F0050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTestsViewController.m in Sources */,
 				60B2AE29209FA1EA0050E2C4 /* ValidShouldPerformWithSenderTestsViewController.m in Sources */,
 				60B2AE31209FA4020050E2C4 /* ValidShouldPerformWithAndWithoutSenderTests.m in Sources */,
 				60717AB02096DD3200A714C3 /* OverridingImplementationTestsViewController.m in Sources */,
