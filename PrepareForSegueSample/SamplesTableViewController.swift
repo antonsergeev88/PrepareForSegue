@@ -15,7 +15,7 @@ class SamplesTableViewController: UITableViewController {
     }
 
     @objc func prepareForSecondSample() {
-        fatalError("Will never called")
+        fatalError("Will be never called")
     }
 
     @objc func prepareForSecondSample(sender: Any?) {
@@ -38,6 +38,15 @@ class SamplesTableViewController: UITableViewController {
 
     @objc func prepareForFourthSample() {
         fatalError("Will be never called")
+    }
+
+    @objc func shouldPerformFifthSample() -> Bool {
+        fatalError("Will be never called")
+    }
+
+    @objc func shouldPerformFifthSample(sender: Any?) -> Bool {
+        print("PrepareForSegue: \(self.title!) is asked if it should perform fifth sample. This method was called because it is exported in Objective-C with @objc, named \"shouldPerform<SegueIdentifier>(sender: Any?)\" and returns Bool. This method has \"sender\" parameter and has higher priority than method without one.")
+        return true
     }
 
 }
