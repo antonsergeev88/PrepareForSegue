@@ -71,34 +71,50 @@ static void prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryboar
     }
 }
 
-static BOOL shouldPerformSegueWithIdentifier_sender(UIViewController *self,
-                                                       SEL _cmd,
-                                                       NSString *identifier,
-                                                       id sender) {
+static BOOL shouldPerformSegueWithIdentifier_sender(UIViewController *self, SEL _cmd, NSString *identifier, id sender) {
     if (!identifier.length) {
         return YES;
     }
-    NSString *shouldPerformSegueSelectorString = [NSString stringWithFormat:@"shouldPerform%@", identifier];
-    SEL shouldPerformSegueSelector = NSSelectorFromString(shouldPerformSegueSelectorString);
-    SEL originalShouldPerformSegueSelector = NSSelectorFromString(@"shouldPerformSegueWithIdentifier:sender:");
+
     Class viewControllerClass = object_getClass(self);
-    BOOL viewControllerRespondsToSelector = class_respondsToSelector(viewControllerClass, shouldPerformSegueSelector);
-    if (viewControllerRespondsToSelector) {
-        Method shouldPerformSegueMethod = class_getInstanceMethod(self.class, shouldPerformSegueSelector);
-        char *returnType = method_copyReturnType(shouldPerformSegueMethod);
-        Method originalShouldPerformSegueMethod = class_getInstanceMethod(self.class,
-                                                                          originalShouldPerformSegueSelector);
-        char *originalReturnType = method_copyReturnType(originalShouldPerformSegueMethod);
-        BOOL viewControllerHasValidShouldPerformMethod = !strcmp(returnType, originalReturnType);
-        free(returnType);
-        free(originalReturnType);
-        if (viewControllerHasValidShouldPerformMethod) {
-            BOOL (*boolReturnMessageSend)(id receiver, SEL operation);
-            boolReturnMessageSend = (BOOL(*)(id, SEL))objc_msgSend;
-            BOOL shouldPerformSegue = boolReturnMessageSend(self, shouldPerformSegueSelector);
-            return shouldPerformSegue;
+    SEL originalShouldPerformSegueSelector = NSSelectorFromString(@"shouldPerformSegueWithIdentifier:sender:");
+    Method originalShouldPerformSegueMethod = class_getInstanceMethod(self.class, originalShouldPerformSegueSelector);
+
+    {
+        NSString *shouldPerformSegueSelectorString = [NSString stringWithFormat:@"shouldPerform%@WithSender:", identifier];
+        SEL shouldPerformSegueSelector = NSSelectorFromString(shouldPerformSegueSelectorString);
+        BOOL viewControllerRespondsToSelector = class_respondsToSelector(viewControllerClass, shouldPerformSegueSelector);
+        if (viewControllerRespondsToSelector) {
+            Method shouldPerformSegueMethod = class_getInstanceMethod(self.class, shouldPerformSegueSelector);
+            BOOL returnTypeIsValid = !compareMethodReturnTypes(shouldPerformSegueMethod, originalShouldPerformSegueMethod);
+            BOOL argumentIsValid = !compareMethodArgumentTypes(shouldPerformSegueMethod, 2, originalShouldPerformSegueMethod, 3);
+            BOOL viewControllerHasValidShouldPerformMethod = returnTypeIsValid && argumentIsValid;
+            if (viewControllerHasValidShouldPerformMethod) {
+                BOOL (*boolReturnMessageSend)(id receiver, SEL operation);
+                boolReturnMessageSend = (BOOL(*)(id, SEL))objc_msgSend;
+                BOOL shouldPerformSegue = boolReturnMessageSend(self, shouldPerformSegueSelector);
+                return shouldPerformSegue;
+            }
         }
     }
+
+    {
+        NSString *shouldPerformSegueSelectorString = [NSString stringWithFormat:@"shouldPerform%@", identifier];
+        SEL shouldPerformSegueSelector = NSSelectorFromString(shouldPerformSegueSelectorString);
+        BOOL viewControllerRespondsToSelector = class_respondsToSelector(viewControllerClass, shouldPerformSegueSelector);
+        if (viewControllerRespondsToSelector) {
+            Method shouldPerformSegueMethod = class_getInstanceMethod(self.class, shouldPerformSegueSelector);
+            BOOL returnTypeIsValid = !compareMethodReturnTypes(shouldPerformSegueMethod, originalShouldPerformSegueMethod);
+            BOOL viewControllerHasValidShouldPerformMethod = returnTypeIsValid;
+            if (viewControllerHasValidShouldPerformMethod) {
+                BOOL (*boolReturnMessageSend)(id receiver, SEL operation);
+                boolReturnMessageSend = (BOOL(*)(id, SEL))objc_msgSend;
+                BOOL shouldPerformSegue = boolReturnMessageSend(self, shouldPerformSegueSelector);
+                return shouldPerformSegue;
+            }
+        }
+    }
+
     return YES;
 }
 
