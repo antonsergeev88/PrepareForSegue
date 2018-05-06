@@ -47,8 +47,10 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
             void (*voidReturnMessageSend)(id receiver, SEL operation, id sender);
             voidReturnMessageSend = (void(*)(id, SEL, id))objc_msgSend;
             voidReturnMessageSend(self, prepareForSegueWithSenderSelector, sender);
+            return;
         }
-    } else if (viewControllerRespondsToSelector) {
+    }
+    if (viewControllerRespondsToSelector) {
         Method prepareForSegueMethod = class_getInstanceMethod(viewControllerClass, prepareForSegueSelector);
         Method originalPrepareForSegueMethod = class_getInstanceMethod(viewControllerClass,
                                                                        originalPrepareForSegueSelector);
@@ -64,6 +66,7 @@ static void as_prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryb
             void (*voidReturnMessageSend)(id receiver, SEL operation);
             voidReturnMessageSend = (void(*)(id, SEL))objc_msgSend;
             voidReturnMessageSend(self, prepareForSegueSelector);
+            return;
         }
     }
 }
