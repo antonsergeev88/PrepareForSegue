@@ -31,6 +31,8 @@
 		609DA20A2093DA5400409FB3 /* ASPrepareForSegueLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 609DA2082093DA5400409FB3 /* ASPrepareForSegueLoader.m */; };
 		60B2AE1C209F47E50050E2C4 /* ValidPrepareWithAndWithoutSenderTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B2AE1B209F47E50050E2C4 /* ValidPrepareWithAndWithoutSenderTestsViewController.m */; };
 		60B2AE1E209F47F20050E2C4 /* ValidPrepareWithAndWithoutSenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B2AE1D209F47F20050E2C4 /* ValidPrepareWithAndWithoutSenderTests.m */; };
+		60B2AE22209F69970050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B2AE21209F69970050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTests.m */; };
+		60B2AE25209F69A70050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B2AE24209F69A70050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTestsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,9 @@
 		60B2AE1A209F47E50050E2C4 /* ValidPrepareWithAndWithoutSenderTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidPrepareWithAndWithoutSenderTestsViewController.h; sourceTree = "<group>"; };
 		60B2AE1B209F47E50050E2C4 /* ValidPrepareWithAndWithoutSenderTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidPrepareWithAndWithoutSenderTestsViewController.m; sourceTree = "<group>"; };
 		60B2AE1D209F47F20050E2C4 /* ValidPrepareWithAndWithoutSenderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidPrepareWithAndWithoutSenderTests.m; sourceTree = "<group>"; };
+		60B2AE21209F69970050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidPrepareAndInvalidPrepareWithSenderTests.m; sourceTree = "<group>"; };
+		60B2AE23209F69A70050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidPrepareAndInvalidPrepareWithSenderTestsViewController.h; sourceTree = "<group>"; };
+		60B2AE24209F69A70050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidPrepareAndInvalidPrepareWithSenderTestsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +150,7 @@
 				600E1B952093A81D00B1AD9C /* ValidPrepareTests */,
 				6047FC94209D570C00906100 /* ValidPrepareWithSenderTests */,
 				60B2AE19209F3C870050E2C4 /* ValidPrepareWithAndWithoutSenderTests */,
+				60B2AE20209F69360050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTests */,
 				600E1B9D2093CC4100B1AD9C /* InvalidPrepareTests */,
 				600E1BA32093CFB500B1AD9C /* ValidShouldPerformTests */,
 				600E1BA92093D26200B1AD9C /* InvalidShouldPerformTests */,
@@ -243,6 +249,16 @@
 				60B2AE1B209F47E50050E2C4 /* ValidPrepareWithAndWithoutSenderTestsViewController.m */,
 			);
 			path = ValidPrepareWithAndWithoutSenderTests;
+			sourceTree = "<group>";
+		};
+		60B2AE20209F69360050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTests */ = {
+			isa = PBXGroup;
+			children = (
+				60B2AE21209F69970050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTests.m */,
+				60B2AE23209F69A70050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTestsViewController.h */,
+				60B2AE24209F69A70050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTestsViewController.m */,
+			);
+			path = ValidPrepareAndInvalidPrepareWithSenderTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,12 +416,14 @@
 				60717AB02096DD3200A714C3 /* OverridingImplementationTestsViewController.m in Sources */,
 				600E1B972093A87C00B1AD9C /* ValidPrepareTests.m in Sources */,
 				600E1BA22093CCE400B1AD9C /* InvalidPrepareTestsViewController.m in Sources */,
+				60B2AE22209F69970050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTests.m in Sources */,
 				600E1BA82093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m in Sources */,
 				60B2AE1C209F47E50050E2C4 /* ValidPrepareWithAndWithoutSenderTestsViewController.m in Sources */,
 				6047FC99209D581300906100 /* ValidPrepareWithSenderTests.m in Sources */,
 				6047FC97209D579000906100 /* ValidPrepareWithSenderTestsViewController.m in Sources */,
 				600E1B9F2093CC6900B1AD9C /* InvalidPrepareTests.m in Sources */,
 				600E1BAE2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m in Sources */,
+				60B2AE25209F69A70050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTestsViewController.m in Sources */,
 				60717AAD2096DD1800A714C3 /* OverridingImplementationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
