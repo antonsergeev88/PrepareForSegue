@@ -48,10 +48,4 @@
     XCTAssertFalse(prepareMethodWithoutSenderWasCalled);
 }
 
-- (void)testCallingPreparePerformance {
-    [self measureBlock:^{
-        [self->_sourceViewController prepareForSegue:self->_segue sender:self->_sourceViewController];
-    }];
-}
-
 @end
