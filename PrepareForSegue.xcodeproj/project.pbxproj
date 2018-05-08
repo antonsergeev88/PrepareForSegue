@@ -17,6 +17,8 @@
 		600E1BA82093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BA72093D03D00B1AD9C /* ValidShouldPerformTestsViewController.m */; };
 		600E1BAB2093D27B00B1AD9C /* InvalidShouldPerformTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BAA2093D27B00B1AD9C /* InvalidShouldPerformTests.m */; };
 		600E1BAE2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600E1BAD2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m */; };
+		6026236E20A104B9007122AD /* ValidCanTestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6026236D20A104B9007122AD /* ValidCanTestsViewController.m */; };
+		6026237020A104C3007122AD /* ValidCanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6026236F20A104C3007122AD /* ValidCanTests.m */; };
 		604349832094C3A200127C7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604349822094C3A200127C7A /* AppDelegate.swift */; };
 		604349882094C3A200127C7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604349862094C3A200127C7A /* Main.storyboard */; };
 		6043498A2094C3A200127C7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 604349892094C3A200127C7A /* Assets.xcassets */; };
@@ -69,6 +71,9 @@
 		600E1BAA2093D27B00B1AD9C /* InvalidShouldPerformTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvalidShouldPerformTests.m; sourceTree = "<group>"; };
 		600E1BAC2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvalidShouldPerformTestsViewController.h; sourceTree = "<group>"; };
 		600E1BAD2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvalidShouldPerformTestsViewController.m; sourceTree = "<group>"; };
+		6026236C20A104B9007122AD /* ValidCanTestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidCanTestsViewController.h; sourceTree = "<group>"; };
+		6026236D20A104B9007122AD /* ValidCanTestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidCanTestsViewController.m; sourceTree = "<group>"; };
+		6026236F20A104C3007122AD /* ValidCanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidCanTests.m; sourceTree = "<group>"; };
 		604349802094C3A200127C7A /* PrepareForSegueSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrepareForSegueSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		604349822094C3A200127C7A /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; };
 		604349872094C3A200127C7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -172,6 +177,7 @@
 				60B2AE2C209FA3A40050E2C4 /* ValidShouldPerformWithAndWithoutSenderTests */,
 				60B2AE32209FA5D00050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTests */,
 				600E1BA92093D26200B1AD9C /* InvalidShouldPerformTests */,
+				6026236B20A103C6007122AD /* ValidCanTests */,
 				600E1B8B2093993F00B1AD9C /* Info.plist */,
 				60717AAB2096DCE300A714C3 /* OverridingImplementationTests */,
 			);
@@ -216,6 +222,16 @@
 				600E1BAD2093D28500B1AD9C /* InvalidShouldPerformTestsViewController.m */,
 			);
 			path = InvalidShouldPerformTests;
+			sourceTree = "<group>";
+		};
+		6026236B20A103C6007122AD /* ValidCanTests */ = {
+			isa = PBXGroup;
+			children = (
+				6026236F20A104C3007122AD /* ValidCanTests.m */,
+				6026236C20A104B9007122AD /* ValidCanTestsViewController.h */,
+				6026236D20A104B9007122AD /* ValidCanTestsViewController.m */,
+			);
+			path = ValidCanTests;
 			sourceTree = "<group>";
 		};
 		604349812094C3A200127C7A /* PrepareForSegueSample */ = {
@@ -459,6 +475,7 @@
 			files = (
 				60B2AE1E209F47F20050E2C4 /* ValidPrepareWithAndWithoutSenderTests.m in Sources */,
 				60B2AE37209FA6430050E2C4 /* ValidShouldPerformAndInvalidShouldPerformWithSenderTests.m in Sources */,
+				6026236E20A104B9007122AD /* ValidCanTestsViewController.m in Sources */,
 				600E1B9C2093AA6100B1AD9C /* ValidPrepareTestsViewController.m in Sources */,
 				600E1BAB2093D27B00B1AD9C /* InvalidShouldPerformTests.m in Sources */,
 				600E1BA52093CFF000B1AD9C /* ValidShouldPerformTests.m in Sources */,
@@ -479,6 +496,7 @@
 				60B2AE25209F69A70050E2C4 /* ValidPrepareAndInvalidPrepareWithSenderTestsViewController.m in Sources */,
 				60B2AE2B209FA1F90050E2C4 /* ValidShouldPerformWithSenderTests.m in Sources */,
 				60717AAD2096DD1800A714C3 /* OverridingImplementationTests.m in Sources */,
+				6026237020A104C3007122AD /* ValidCanTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

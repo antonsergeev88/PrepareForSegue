@@ -34,7 +34,7 @@ static void prepareForSegue_sender(UIViewController *self, SEL _cmd, UIStoryboar
     }
 
     Class viewControllerClass = object_getClass(self);
-    SEL originalPrepareForSegueSelector = NSSelectorFromString(@"prepareForSegue:sender:");
+    SEL originalPrepareForSegueSelector = sel_registerName("prepareForSegue:sender:");
     Method originalPrepareForSegueMethod = class_getInstanceMethod(viewControllerClass, originalPrepareForSegueSelector);
 
     {
@@ -118,6 +118,73 @@ static BOOL shouldPerformSegueWithIdentifier_sender(UIViewController *self, SEL 
     return YES;
 }
 
+static BOOL (*originalCanPerformUnwindSegueAction_fromViewController_withSender)(UIViewController *self, SEL _cmd, SEL action, UIViewController *fromViewController, id sender);
+
+static BOOL canPerformUnwindSegueAction_fromViewController_withSender(UIViewController *self, SEL _cmd, SEL action, UIViewController *fromViewController, id sender) {
+    BOOL originalReturn = originalCanPerformUnwindSegueAction_fromViewController_withSender(self, _cmd, action, fromViewController, sender);
+    if (!originalReturn) {
+        return originalReturn;
+    }
+
+    Class viewControllerClass = object_getClass(self);
+    SEL originalCanPerformSelector = sel_registerName("canPerformUnwindSegueAction:fromViewController:withSender:");
+    Method originalCanPerformMethod = class_getInstanceMethod(viewControllerClass, originalCanPerformSelector);
+
+    const char *actionSelectorName = sel_getName(action);
+    size_t actionSelectorNameLength = strlen(actionSelectorName);
+    char *uppercaseActionName = malloc(sizeof(actionSelectorName));
+    strcpy(uppercaseActionName, actionSelectorName);
+    uppercaseActionName[actionSelectorNameLength - 1] = '\0';
+    uppercaseActionName[0] = toupper(uppercaseActionName[0]);
+    size_t actionNameLength = strlen(uppercaseActionName);
+
+    {
+        char *canPerformSelectorName = malloc(actionNameLength + 3 + 1);
+        strcpy(canPerformSelectorName, "can");
+        strcat(canPerformSelectorName, uppercaseActionName);
+        strcat(canPerformSelectorName, ":");
+        SEL canPerformSelector = sel_registerName(canPerformSelectorName);
+        free(canPerformSelectorName);
+        BOOL viewControllerRespondsToSelector = class_respondsToSelector(viewControllerClass, canPerformSelector);
+        if (viewControllerRespondsToSelector) {
+            Method canPerformMethod = class_getInstanceMethod(viewControllerClass, canPerformSelector);
+            BOOL returnTypeIsValid = !compareMethodReturnTypes(canPerformMethod, originalCanPerformMethod);
+            BOOL viewControllerHasValidCanPerformMethod = returnTypeIsValid;
+            if (viewControllerHasValidCanPerformMethod) {
+                BOOL (*boolReturnMessageSend)(id receiver, SEL operation, id sender);
+                boolReturnMessageSend = (BOOL(*)(id, SEL, id))objc_msgSend;
+                BOOL canPerform = boolReturnMessageSend(self, canPerformSelector, sender);
+                free(uppercaseActionName);
+                return canPerform;
+            }
+        }
+    }
+
+    {
+        char *canPerformSelectorName = malloc(actionNameLength + 3);
+        strcpy(canPerformSelectorName, "can");
+        strcat(canPerformSelectorName, uppercaseActionName);
+        SEL canPerformSelector = sel_registerName(canPerformSelectorName);
+        free(canPerformSelectorName);
+        BOOL viewControllerRespondsToSelector = class_respondsToSelector(viewControllerClass, canPerformSelector);
+        if (viewControllerRespondsToSelector) {
+            Method canPerformMethod = class_getInstanceMethod(viewControllerClass, canPerformSelector);
+            BOOL returnTypeIsValid = !compareMethodReturnTypes(canPerformMethod, originalCanPerformMethod);
+            BOOL viewControllerHasValidCanPerformMethod = returnTypeIsValid;
+            if (viewControllerHasValidCanPerformMethod) {
+                BOOL (*boolReturnMessageSend)(id receiver, SEL operation);
+                boolReturnMessageSend = (BOOL(*)(id, SEL))objc_msgSend;
+                BOOL canPerform = boolReturnMessageSend(self, canPerformSelector);
+                free(uppercaseActionName);
+                return canPerform;
+            }
+        }
+    }
+
+    free(uppercaseActionName);
+    return originalReturn;
+}
+
 @interface ASPrepareForSegueLoader : NSObject
 
 @end
@@ -134,6 +201,12 @@ static BOOL shouldPerformSegueWithIdentifier_sender(UIViewController *self, SEL 
     SEL shouldPerformSegueSelector = NSSelectorFromString(@"shouldPerformSegueWithIdentifier:sender:");
     Method shouldPerformSegueMethod = class_getInstanceMethod(viewControllerClass, shouldPerformSegueSelector);
     method_setImplementation(shouldPerformSegueMethod, (IMP)shouldPerformSegueWithIdentifier_sender);
+
+    SEL canPerformUnwindSegueActionSelector = NSSelectorFromString(@"canPerformUnwindSegueAction:fromViewController:withSender:");
+    Method canPerformUnwindSegueActionMethod = class_getInstanceMethod(viewControllerClass, canPerformUnwindSegueActionSelector);
+    IMP originalCanPerformUnwindSegueActionImplementation = method_getImplementation(canPerformUnwindSegueActionMethod);
+    originalCanPerformUnwindSegueAction_fromViewController_withSender = (BOOL(*)(id, SEL, SEL, UIViewController *, id))originalCanPerformUnwindSegueActionImplementation;
+    method_setImplementation(canPerformUnwindSegueActionMethod, (IMP)canPerformUnwindSegueAction_fromViewController_withSender);
 }
 
 @end
